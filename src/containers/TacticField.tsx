@@ -3,6 +3,7 @@ import { Button, Stack, Form, ProgressBar } from "react-bootstrap";
 import styled from "styled-components";
 
 import FieldImageSrc from "../assets/images/field.png";
+import Player from "../components/Player";
 
 const GrassField = styled.div`
   background-color: green;
@@ -37,7 +38,6 @@ const applyTacticToPlayers = (tactic: string, players: Player[]) => {
   let i = 0;
   return [...rows, 1].map((count) => {
     const playersLine = players.slice(i, +count + i);
-    console.log(i, count, +count);
     i += +count;
     return playersLine;
   });
@@ -125,10 +125,10 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
             <Stack
               key={`players-line-${i}`}
               direction="horizontal"
-              className="justify-content-around"
+              className="justify-content-around text-white"
             >
               {row.map((player) => (
-                <span key={player.lastName}>{player.lastName} {player.number}</span>
+                <Player key={player.lastName} player={player} />
               ))}
             </Stack>
           ))}
