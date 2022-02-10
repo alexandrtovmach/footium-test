@@ -1,13 +1,12 @@
-import Dashboard from "./containers/Dashboard";
-import Header from "./containers/Header";
-import { club } from "./MOCK";
+import { Container } from "react-bootstrap";
+import TacticField from "./containers/TacticField";
+import { players } from "./MOCK";
 
 const App: React.FunctionComponent = () => {
   return (
-    <>
-      <Header club={club} />
-      <Dashboard club={club} />
-    </>
+    <Container>
+      <TacticField players={players} />
+    </Container>
   );
 };
 

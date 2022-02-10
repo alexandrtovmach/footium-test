@@ -12,10 +12,18 @@ interface League {
   name: string;
 }
 
-type Club = {
+interface Club {
   id: string;
   name: string;
   league: League;
   position: number;
   games: Game[];
 };
+
+interface Player {
+  id: number;
+  firstName: string;
+  lastName: string;
+  name: string;
+  number: number;
+}
