@@ -1,4 +1,4 @@
-import { Button, Image, Stack } from "react-bootstrap";
+import { Image, Stack } from "react-bootstrap";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
@@ -29,7 +29,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({ club }) => {
           </div>
         </Stack>
       </Stack>
-      <Button>Continue</Button>
     </HeaderContainer>
   );
 };

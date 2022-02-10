@@ -64,7 +64,7 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
   const playersMap = applyTacticToPlayers(tacticSchema, players);
 
   return (
-    <GrassField className="p-2 rounded">
+    <GrassField className="m-4 p-2 rounded">
       <GrassFieldHeader
         gap={2}
         direction="horizontal"
@@ -84,7 +84,7 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
       <Stack
         direction="horizontal"
         gap={5}
-        className="py-2 align-items-start justify-content-between"
+        className="py-2 align-items-start justify-content-center flex-wrap"
       >
         <TacticInfo className="rounded p-2 text-white">
           <h2 className="text-uppercase">info</h2>
@@ -116,7 +116,7 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
           ))}
         </TacticMap>
         <TacticPlayers className="text-white">
-          <div className="d-flex flex-wrap justify-content-center">
+          <div className="d-flex flex-wrap justify-content-between">
             {players.slice(0, 11).map((player) => (
               <Player
                 key={player.lastName}
@@ -126,7 +126,7 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
             ))}
           </div>
           <hr />
-          <div className="d-flex flex-wrap justify-content-center">
+          <div className="d-flex flex-wrap justify-content-between">
             {players.slice(11).map((player) => (
               <Player
                 key={player.lastName}
