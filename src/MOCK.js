@@ -1,7 +1,7 @@
 export const club = {
   id: "club_1",
   name: "Super Club",
-
+  colors: ["#3178c6"],
   league: {
     id: "league_1",
     name: "Top League",

@@ -31,6 +31,7 @@ const TacticMap = styled(Stack)`
 
 interface TacticFieldProps {
   players: Player[];
+  club: Club;
 }
 
 const applyTacticToPlayers = (tactic: string, players: Player[]) => {
@@ -45,6 +46,7 @@ const applyTacticToPlayers = (tactic: string, players: Player[]) => {
 
 const TacticField: React.FunctionComponent<TacticFieldProps> = ({
   players,
+  club
 }) => {
   const [tacticSchema, setTacticSchema] = useState<string>("4-5-1");
 
@@ -128,7 +130,7 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
               className="justify-content-around text-white"
             >
               {row.map((player) => (
-                <Player key={player.lastName} player={player} />
+                <Player key={player.lastName} player={player} color={club.colors[0]} />
               ))}
             </Stack>
           ))}

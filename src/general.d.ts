@@ -15,6 +15,7 @@ interface League {
 interface Club {
   id: string;
   name: string;
+  colors: string[];
   league: League;
   position: number;
   games: Game[];

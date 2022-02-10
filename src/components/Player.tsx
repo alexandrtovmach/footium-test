@@ -14,16 +14,22 @@ const PlayerContainer = styled(Stack)`
   font-size: 14px;
 `
 
+const PlayerNumber = styled.p`
+  margin-top: -2.5rem;
+  text-shadow: 0 0 1px black;
+`
+
 interface PlayerProps {
   player: Player;
+  color: string;
 }
 
-const Player: React.FunctionComponent<PlayerProps> = ({ player }) => {
+const Player: React.FunctionComponent<PlayerProps> = ({ player, color }) => {
   return (
     <PlayerContainer className="align-items-center">
-      <TShirt />
+      <TShirt color={color} />
+      <PlayerNumber className="text-center fw-bolder fs-6">{player.number}</PlayerNumber>
       <p className="text-center m-0">{player.lastName}</p>
-      <p className="text-center fw-bolder m-0">{player.number}</p>
     </PlayerContainer>
   );
 };
