@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Stack, Form, ProgressBar } from "react-bootstrap";
+import { Stack, Form } from "react-bootstrap";
 import styled from "styled-components";
 
 import FieldImageSrc from "../assets/images/field.png";
@@ -10,20 +10,25 @@ const GrassField = styled.div`
 `;
 
 const GrassFieldHeader = styled(Stack)`
-  background-color: lightgreen;
+  background-color: darkgreen;
 `;
 
 const TacticInfo = styled.aside`
   background-color: darkgreen;
-  flex-grow: 0;
-  flex-basis: 200px;
+  flex-grow: 1;
+  flex-basis: 20%;
 `;
 
-const TacticPlayers = styled.aside``;
+const TacticPlayers = styled.aside`
+  flex-grow: 1;
+  flex-basis: 20%;
+`;
 
 const TacticMap = styled(Stack)`
   width: 500px;
-  height: 720px;
+  height: 750px;
+  flex-grow: 0;
+  flex-shrink: 0;
   background-image: url(${FieldImageSrc});
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -46,7 +51,7 @@ const applyTacticToPlayers = (tactic: string, players: Player[]) => {
 
 const TacticField: React.FunctionComponent<TacticFieldProps> = ({
   players,
-  club
+  club,
 }) => {
   const [tacticSchema, setTacticSchema] = useState<string>("4-5-1");
 
@@ -63,12 +68,9 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
       <GrassFieldHeader
         gap={2}
         direction="horizontal"
-        className="d-flex p-2 justify-content-between align-items-center rounded"
+        className="d-flex p-2 justify-content-between align-items-center rounded text-white"
       >
         <Stack gap={2} direction="horizontal">
-          <Button variant="success" className="rounded-circle">
-            ←
-          </Button>
           <p className="text-uppercase fw-bold mb-0">Tactics</p>
           <Form.Select value={tacticSchema} onChange={handleTacticSchemaChange}>
             <option value="4-3-3">4-3-3</option>
@@ -77,41 +79,15 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
             <option value="1-2-4-3">1-2-4-3</option>
           </Form.Select>
         </Stack>
-        <Stack gap={2} direction="horizontal">
-          <Form.Group>
-            <Form.Label>Familiarity</Form.Label>
-            <ProgressBar now={40} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Intensity</Form.Label>
-            <ProgressBar now={60} />
-          </Form.Group>
-        </Stack>
       </GrassFieldHeader>
 
       <Stack
         direction="horizontal"
-        gap={2}
+        gap={5}
         className="py-2 align-items-start justify-content-between"
       >
-        <TacticInfo className="rounded p-2">
-          <h2>Name</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quis
-            veritatis eum et! Voluptatum accusantium officia ad ratione
-            blanditiis, culpa repellendus rem atque nemo, qui tempora, sint
-            architecto alias consectetur?
-          </p>
-
-          <h2>Name</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quis
-            veritatis eum et! Voluptatum accusantium officia ad ratione
-            blanditiis, culpa repellendus rem atque nemo, qui tempora, sint
-            architecto alias consectetur?
-          </p>
-
-          <h2>Name</h2>
+        <TacticInfo className="rounded p-2 text-white">
+          <h2 className="text-uppercase">info</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quis
             veritatis eum et! Voluptatum accusantium officia ad ratione
@@ -121,7 +97,7 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
         </TacticInfo>
         <TacticMap
           as="section"
-          className="d-flex flex-column justify-content-between py-5"
+          className="d-flex flex-column justify-content-between py-4"
         >
           {playersMap.map((row, i) => (
             <Stack
@@ -130,12 +106,36 @@ const TacticField: React.FunctionComponent<TacticFieldProps> = ({
               className="justify-content-around text-white"
             >
               {row.map((player) => (
-                <Player key={player.lastName} player={player} color={club.colors[0]} />
+                <Player
+                  key={player.lastName}
+                  player={player}
+                  color={club.colors[0]}
+                />
               ))}
             </Stack>
           ))}
         </TacticMap>
-        <TacticPlayers>Players</TacticPlayers>
+        <TacticPlayers className="text-white">
+          <div className="d-flex flex-wrap justify-content-center">
+            {players.slice(0, 11).map((player) => (
+              <Player
+                key={player.lastName}
+                player={player}
+                color={club.colors[0]}
+              />
+            ))}
+          </div>
+          <hr />
+          <div className="d-flex flex-wrap justify-content-center">
+            {players.slice(11).map((player) => (
+              <Player
+                key={player.lastName}
+                player={player}
+                color={club.colors[0]}
+              />
+            ))}
+          </div>
+        </TacticPlayers>
       </Stack>
     </GrassField>
   );
